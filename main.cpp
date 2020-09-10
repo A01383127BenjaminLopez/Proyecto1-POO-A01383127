@@ -1,5 +1,5 @@
-//Benjamin Guillermo López Salinas A01383127
-//Programación Orientada a Objetos
+//Benjamin Guillermo LÃ³pez Salinas A01383127
+//ProgramaciÃ³n Orientada a Objetos
 //7 de Septiembre del 2020
 //Proyecto 1
 
@@ -109,6 +109,9 @@ int main()
     string cuenta;
     string direccion;
     string empresa;
+    string getmyFileName;
+    string getSalidaName;
+    string getPlantillaName;
 
 string line1[30];
 string line2[30];
@@ -117,7 +120,7 @@ string line4[30];
 string line5[30];
 string line6[30];
 
-ifstream myfile("Datos.txt");
+
 
   int a = 0;
   int b = 0;
@@ -125,6 +128,24 @@ ifstream myfile("Datos.txt");
   int d = 0;
   int e = 0;
   int f = 0;
+
+    cout << "Dame el nombre del archivo Plantilla : ";
+	cin >> getPlantillaName;
+	cout<<endl;
+	ifstream archivoPlantilla( getPlantillaName.c_str() );
+
+    cout << "Dame el nombre del archivo con los datos del cliente : ";
+	cin >> getmyFileName;
+	cout<<endl<<endl;
+	ifstream myfile( getmyFileName.c_str() );
+
+	cout << "Como quieres que se llame el archivo de Salida? : ";
+	cin >> getSalidaName;
+	cout<<endl<<endl;
+	ofstream archivoSalida(getSalidaName.c_str());
+
+
+
 
   if(!myfile)
   {
@@ -179,15 +200,9 @@ ifstream myfile("Datos.txt");
     empresa=empresa.substr(busco);
     empresa.erase(0,1);
 
-    // cout<<cliente<<endl; cout<<saldo<<endl;cout<<fecha<<endl;cout<<cuenta<<endl;cout<<direccion<<endl;cout<<empresa<<endl;
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     string linea;
-
-	ifstream archivoPlantilla;
-	archivoPlantilla.open("Plantilla.txt");
-
-    ofstream archivoSalida;
-	archivoSalida.open("Plantilla_Llena_Datos_Cliente.txt");
 
 	while (getline(archivoPlantilla, linea))
 	{
@@ -207,7 +222,4 @@ ifstream myfile("Datos.txt");
 	myfile.close();
 	return 0;
 
-
 }
-
-
